@@ -1,16 +1,33 @@
 <html>
 <head></head>
-<body onload="document.forms[0].submit()">
-   <form method="post" action="http://18.158.46.251:35204/api.php" enctype="application/x-www-form-urlencoded">
+<body onload="submitForm()">
+   <form id="orderForm">
       <input type="hidden" name="action" value="order">
-      <input type="hidden" name="user_id" value="38313030">
+      <input type="hidden" name="user_id" value="37393231">
       <input type="hidden" name="car_name2" value="BWM E38 2000">
-      <input type="hidden" name="car_id" value="1">
+      <input type="hidden" name="car_id" value="">
       <input type="hidden" name="name" value="test">
-      <input type="hidden" name="email" value="test1@gmail.com">
+      <input type="hidden" name="email" value="test@gmail.com">
       <input type="hidden" name="phone" value="999999999">
       <input type="hidden" name="location" value="New York City">
       <input type="hidden" name="picture" value="assets/img/cars/car_1/1.jpg">
    </form>
+
+   <script>
+      function submitForm() {
+         var formData = new FormData(document.getElementById('orderForm'));
+         
+         var xhr = new XMLHttpRequest();
+         xhr.open("POST", "http://10.0.4.45/api.php", true);
+
+        
+         xhr.onerror = function() {
+             window.location.href = "http://10.0.4.45/main_page.html";
+         };
+         xhr.send(formData);
+
+        
+      }
+   </script>
 </body>
 </html>
